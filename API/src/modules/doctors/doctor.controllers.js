@@ -75,7 +75,10 @@ controllers.UpdateData = async (req, res)=>{
 
             const result = await models.UpdateData(queries)
 
-            return response(res, 200, result)
+            return response(res, 200, {
+                message: 'Data updated',
+                result: result
+            })
         })
     } catch (error) {
         console.log(error)
