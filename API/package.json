@@ -1,0 +1,42 @@
+{
+  "name": "zi_care",
+  "version": "1.0.0",
+  "description": "Clinic Reservation App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "migrate:up": "npx sequelize-cli db:migrate --config src/database/config/config.json --migrations-path src/database/migrations",
+    "migrate:down": "npx sequelize-cli db:migrate:undo:all --config src/database/config/config.json --migrations-path src/database/migrations",
+    "seed:up": "npx sequelize-cli db:seed:all --config src/database/config/config.json --seeders-path src/database/seeders",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pius706975/zi-care-screening.git"
+  },
+  "author": "Pius Restiantoro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pius706975/zi-care-screening/issues"
+  },
+  "homepage": "https://github.com/pius706975/zi-care-screening#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "comander": "^0.0.1-security",
+    "commander": "^11.0.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.6",
+    "nodemon": "^3.0.1",
+    "pg": "^8.11.3",
+    "require": "^2.4.20",
+    "sequelize": "^6.33.0",
+    "sequelize-cli": "^6.6.1",
+    "validator": "^13.11.0"
+  }
+}
