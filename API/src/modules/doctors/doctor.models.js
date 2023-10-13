@@ -32,7 +32,7 @@ models.UpdateData = ({doctor_name, specialization, mobile_phone, dr_id})=>{
     return new Promise((resolve, reject)=>{
         db.query(`
             UPDATE doctors
-            SET doctor_name = COALESCE($1, name),
+            SET doctor_name = COALESCE($1, doctor_name),
                 specialization = COALESCE($2, specialization),
                 mobile_phone = COALESCE($3, mobile_phone)
             WHERE dr_id = $4
@@ -66,7 +66,7 @@ models.DoctorExists = ({name})=>{
     return new Promise((resolve, reject)=>{
         db.query(`
             SELECT * FROM doctors   
-            WHERE name ILIKE $1`,
+            WHERE doctor_name ILIKE $1`,
             [`%${name}%`])
         .then((res)=>{
             resolve(res.rows)
@@ -113,7 +113,7 @@ models.GetDoctorBySpecialization = ({specialization})=>{
         db.query(`
             SELECT * FROM doctors
             WHERE specialization ILIKE $1
-            ORDER BY name ASC`,
+            ORDER BY doctor_name ASC`,
             [`%${specialization}%`])
         .then((res)=>{
             resolve(res.rows)

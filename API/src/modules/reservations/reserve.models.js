@@ -45,7 +45,7 @@ models.GetAllReservations = ()=>{
                 reservations.reserve_id,
                 reservations.queue_number,
                 users.name as patient_name,
-                doctors.doctor_name as doctor,
+                doctors.doctor_name as doctor, 
                 doctors.specialization,
                 dr_schedules.day,
                 dr_schedules.start_time as schedule,
@@ -59,7 +59,7 @@ models.GetAllReservations = ()=>{
         .then((res)=>{
             resolve(res.rows)
         }).catch((err)=>{
-            reject(err)
+            reject(err) 
         })
     })
 }

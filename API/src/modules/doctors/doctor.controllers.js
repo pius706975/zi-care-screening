@@ -17,13 +17,13 @@ controllers.AddDoctor = async (req, res)=>{
             }
 
             const queries = {
-                name: req.body.name,
+                doctor_name: req.body.doctor_name,
                 specialization: req.body.specialization,
                 mobile_phone: req.body.mobile_phone
             }
 
             const doctorExists = await models.DoctorExists(queries)
-            if (!req.body.name) {
+            if (!req.body.doctor_name) {
                 return response(res, 400, {message: 'Doctor name cannot be empty'})
             } else if (!req.body.specialization) {
                 return response(res, 400, {message: 'Specialization cannot be empty'})
@@ -59,7 +59,7 @@ controllers.UpdateData = async (req, res)=>{
             }
 
             const queries = {
-                name: req.body.name,
+                doctor_name: req.body.doctor_name,
                 specialization: req.body.specialization,
                 mobile_phone: req.body.mobile_phone,
                 dr_id: req.params.dr_id

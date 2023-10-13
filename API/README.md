@@ -75,7 +75,7 @@ If re-configure "config.json" is done, do database migration after creating data
 
 Database seeds are provided. Use seeds if you don't want to create new data
 ``` bash
-  npm run seed:up
+  npm run seed:up 
 ```
 
 Start the server
@@ -86,3 +86,6 @@ Start the server
 
   npm run dev
 ```
+
+## Postman Documentation
+### [Postman documentation](https://documenter.getpostman.com/view/26304983/2s9YR56Eev)
