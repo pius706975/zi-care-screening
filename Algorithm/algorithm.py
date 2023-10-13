@@ -4,8 +4,8 @@ seq2 = [8, 7]
 seq3 = [7, 10]
 
 def sequenceExists(mainArray, sequence):
-    for i in range(len(mainArray)):
-        if mainArray[i:i+len(sequence)] == sequence:
+    for a in range(len(mainArray)):
+        if mainArray[a:a+len(sequence)] == sequence:
             return True
     return False
 
