@@ -57,7 +57,7 @@ models.GetAllSchedules = ()=>{
 
     return new Promise((resolve, reject)=>{
         db.query(`
-            SELECT schedule_id, name, specialization, day, start_time, end_time, mobile_phone FROM dr_schedules
+            SELECT schedule_id, doctor_name, specialization, day, start_time, end_time, mobile_phone FROM dr_schedules
             LEFT JOIN doctors USING (dr_id)
             ORDER BY 
                 CASE 
@@ -81,7 +81,7 @@ models.GetScheduleBySpecialization = ({specialization})=>{
 
     return new Promise((resolve, reject)=>{
         db.query(`
-            SELECT schedule_id, name, specialization, day, start_time, end_time, capacity, mobile_phone FROM dr_schedules
+            SELECT schedule_id, doctor_name, specialization, day, start_time, end_time, capacity, mobile_phone FROM dr_schedules
             LEFT JOIN doctors USING (dr_id)
             WHERE specialization ILIKE $1
             ORDER BY 
@@ -107,8 +107,23 @@ models.GetScheduleByID = ({schedule_id})=>{
 
     return new Promise((resolve, reject)=>{
         db.query(`
-            SELECT schedule_id, name, specialization, day, start_time, end_time, capacity, mobile_phone FROM dr_schedules
+            SELECT schedule_id, doctor_name, specialization, day, start_time, end_time, capacity, mobile_phone FROM dr_schedules
             LEFT JOIN doctors USING (dr_id)
+            WHERE schedule_id = $1`,
+            [schedule_id])
+        .then((res)=>{
+            resolve(res.rows)
+        }).catch((err)=>{
+            reject(err)
+        })
+    })
+}
+
+models.GetScheduleCapacity = ({schedule_id})=>{
+
+    return new Promise((resolve, reject)=>{
+        db.query(`
+            SELECT capacity FROM dr_schedules
             WHERE schedule_id = $1`,
             [schedule_id])
         .then((res)=>{

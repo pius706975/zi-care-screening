@@ -157,4 +157,20 @@ controllers.GetScheduleByID = async (req, res)=>{
     }
 }
 
+controllers.GetScheduleCapacity = async (req, res)=>{
+    try {
+        const schedule_id = req.params.schedule_id
+        const result = await models.GetScheduleCapacity({schedule_id})
+        const capacity = result[0].capacity
+        if (capacity === 0) {
+            return response(res, 404, {message: 'Reservation is not available'})
+        }
+
+        return response(res, 200, result)
+    } catch (error) {
+        console.log(error)
+        return response(res, 500, error.message)
+    }
+}
+
 module.exports = controllers

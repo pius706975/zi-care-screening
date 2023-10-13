@@ -84,7 +84,7 @@ const sendEmail = async (email, subject, link)=>{
                             </div>
                             
                             <div class="email-content">
-                                <p>Please verify your email by clicking the link below:</p>
+                                <p>Please verify your email by clicking the Button below:</p>
                                 <a class="email-button" href="${link}"><span>Verify Email</span></a>
                             </div>
                             
