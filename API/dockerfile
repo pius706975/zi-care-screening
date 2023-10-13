@@ -1,0 +1,15 @@
+#create image
+
+FROM node:20-alpine3.17
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+# RUN npm run migrate:up
+
+EXPOSE 8001
+
+CMD ["node", "index.js"]
